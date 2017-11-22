@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "JsonWebAlgorithm",
+	"category" : "JSONWebToken-Core-JSONWebToken-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "JWANone",
+	"type" : "normal"
+}

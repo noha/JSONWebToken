@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "JOSEHeader",
+	"category" : "JSONWebToken-Core-JSONWebToken-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"algorithm"
+	],
+	"name" : "JWCryptoHeader",
+	"type" : "normal"
+}

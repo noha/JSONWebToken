@@ -1,0 +1,3 @@
+accessing
+registeredHeaders
+	^ #( typ cty )

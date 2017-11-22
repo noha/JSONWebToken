@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "JWSSerializer",
+	"category" : "JSONWebToken-Core-JSONWebToken-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "JWSCompactSerializer",
+	"type" : "normal"
+}

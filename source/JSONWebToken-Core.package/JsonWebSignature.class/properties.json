@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "JSONWebToken-Core-JSONWebToken-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"payload",
+		"key",
+		"protectedHeader"
+	],
+	"name" : "JsonWebSignature",
+	"type" : "normal"
+}
