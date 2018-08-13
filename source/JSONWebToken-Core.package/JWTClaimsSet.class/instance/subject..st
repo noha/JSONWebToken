@@ -1,3 +1,3 @@
 accessing
 subject: anObject
-	self at: 'sub' put: anObject
+	self sub: anObject
