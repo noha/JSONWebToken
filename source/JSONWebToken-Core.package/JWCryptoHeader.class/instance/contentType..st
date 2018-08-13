@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 contentType: aString
 	properties at: 'typ' put: aString

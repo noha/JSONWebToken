@@ -1,7 +1,7 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "TorstenBergmann 8/13/2018 15:21",
 	"super" : "JWSSerializer",
-	"category" : "JSONWebToken-Core-JSONWebToken-Core",
+	"category" : "JSONWebToken-Core-Serialization",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

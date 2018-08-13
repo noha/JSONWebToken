@@ -1,3 +1,3 @@
-as yet unclassified
+writing
 writeHeader: aHeader 
 	stream nextPutAll:  aHeader asJson asByteArray base64Encoded 
