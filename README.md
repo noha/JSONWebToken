@@ -1,5 +1,7 @@
 # JSONWebToken for Pharo
 
+[![Build Status](https://travis-ci.org/noha/JSONWebToken.svg?branch=master)](https://travis-ci.org/noha/JSONWebToken)
+
 ## Overview
 
 Implementation of a JSON web token following [RFC 7519](https://tools.ietf.org/html/rfc7519) for [Pharo](http://www.pharo.org).
