@@ -9,6 +9,7 @@ baseline: spec
 					versionString: '13';
 					repository: 'http://mc.stfx.eu/Neo' ].
 		spec 
-			package: #'JSONWebToken-Core';
+			package: #'JSONWebToken-Core' with: [
+				spec requires: #( 'NeoJSON' ) ];
 			package: 'JSONWebToken-Tests' with: [
-				spec requires: #(#'JSONWebToken-Core' ). ]. ].
+				spec requires: #(#'JSONWebToken-Core' ) ] ]
