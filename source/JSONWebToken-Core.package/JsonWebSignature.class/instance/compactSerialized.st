@@ -1,3 +1,3 @@
-as yet unclassified
+serialization
 compactSerialized
 	^ JWSCompactSerializer new serialize: self 

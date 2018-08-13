@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testRoundtrip
 	| jws tokenString materialized |
 	
@@ -12,4 +12,4 @@ testRoundtrip
 	
 	materialized := JsonWebSignature materializeCompact: tokenString key: 'foobar'.
 
-	self assert: (jws = materialized).
+	self assert: jws equals: materialized

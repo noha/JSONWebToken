@@ -1,4 +1,4 @@
-as yet unclassified
+serialization
 serialize: aWebSignature
 	| signature |
 	aWebSignature writeProtectedHeaderOn: self.
