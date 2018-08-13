@@ -1,3 +1,3 @@
 writing
 writeHeader: aHeader 
-	stream nextPutAll:  aHeader asJson asByteArray base64Encoded 
+	stream nextPutAll: aHeader asJson asByteArray base64Encoded 
