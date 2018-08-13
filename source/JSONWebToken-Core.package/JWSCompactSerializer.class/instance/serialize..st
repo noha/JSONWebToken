@@ -8,5 +8,5 @@ serialize: aWebSignature
 	signature := aWebSignature signatureFor: stream contents.
 	stream
 		nextPut: $.;
-		nextPutAll: signature base64Encoded.
+		nextPutAll: (self base64Encoded: signature).
 	^ stream contents

@@ -1,0 +1,9 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'JSONWebToken',
+      #directory : 'source',
+      #platforms : [ #pharo ]
+    }
+  ]
+}
