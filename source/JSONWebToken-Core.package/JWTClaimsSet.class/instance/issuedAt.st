@@ -1,3 +1,3 @@
 accessing
 issuedAt
-	^ self at: 'iat'
+	^ self iat

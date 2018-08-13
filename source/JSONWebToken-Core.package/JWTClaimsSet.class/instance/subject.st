@@ -1,3 +1,3 @@
 accessing
 subject
-	^ self at: 'sub'
+	^ self sub

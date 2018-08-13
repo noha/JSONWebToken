@@ -1,3 +1,3 @@
 accessing
 issuer: anObject
-	self at: 'iss' put: anObject
+	self iss: anObject

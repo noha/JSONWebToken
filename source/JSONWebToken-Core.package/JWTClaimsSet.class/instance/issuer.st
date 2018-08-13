@@ -1,3 +1,3 @@
 accessing
 issuer
-	^ self at: 'iss'
+	^ self iss
