@@ -4,7 +4,7 @@ baseline: spec
 
 	spec for: #'common' do: [
 		spec baseline: 'NeoJSON' 
-			with: [ spec repository: 'github://svenvc/NeoJSON:master/repository' ].
+			with: [ spec repository: 'github://zweidenker/NeoJSON:master/repository' ].
 		spec 
 			package: #'JSONWebToken-Core' with: [
 				spec requires: #( 'NeoJSON' ) ];
