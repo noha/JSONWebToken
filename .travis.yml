@@ -6,9 +6,11 @@ os:
 
 matrix:
   include:
-    - smalltalk: Pharo-7.0
+    - smalltalk: Pharo64-7.0
       smalltalk_config: .smalltalk.ston
-    - smalltalk: Pharo-6.1
+    - smalltalk: Pharo32-7.0
+      smalltalk_config: .smalltalk.ston
+    - smalltalk: Pharo32-6.1
       smalltalk_config: .smalltalk-legacy.ston
-    - smalltalk: Pharo-5.0
+    - smalltalk: Pharo32-5.0
       smalltalk_config: .smalltalk-legacy.ston
