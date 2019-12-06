@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "GOC 12/4/2019 13:05",
+	"super" : "Object",
+	"category" : "JSONWebToken-Core-Serialization",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"URLSafeAlphabet"
+	],
+	"instvars" : [
+		"encoder"
+	],
+	"name" : "Base64UrlEncoder",
+	"type" : "normal"
+}

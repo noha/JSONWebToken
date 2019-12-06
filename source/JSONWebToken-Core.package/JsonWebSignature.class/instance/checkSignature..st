@@ -1,4 +1,5 @@
 signature
 checkSignature: parts
-	((self signatureFor: ($. join: { parts first . parts second })) = parts third base64Padded base64Decoded asByteArray) ifFalse: [
-		Error signal: 'signature does not match' ].
+
+	( self signatureFor:( $. join: {parts first. parts second} ) ) = ( self base64Decoded: parts third  )
+		ifFalse: [ Error signal: 'signature does not match' ]
