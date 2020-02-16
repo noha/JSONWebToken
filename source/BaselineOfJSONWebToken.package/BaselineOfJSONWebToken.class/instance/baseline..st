@@ -7,7 +7,7 @@ baseline: spec
 				baseline: 'NeoJSON'
 				with: [ spec repository: 'github://svenvc/NeoJSON:master/repository' ].
 			spec
-				baseline: 'OPenSSL-Pharo'
+				baseline: 'OpenSSL-Pharo'
 				with: [ spec repository: 'github://PierceNG/OpenSSL-Pharo/src-st' ].
 			spec
 				package: #'JSONWebToken-Core'
