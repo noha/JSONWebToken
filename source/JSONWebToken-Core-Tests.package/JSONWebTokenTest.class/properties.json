@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "TorstenBergmann 8/13/2018 15:30",
+	"super" : "TestCase",
+	"category" : "JSONWebToken-Core-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "JSONWebTokenTest",
+	"type" : "normal"
+}
