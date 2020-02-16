@@ -6,5 +6,5 @@ checkSignature: parts withKey: key
 				join:
 					{parts first.
 					parts second}) withKey: key)
-		= parts third base64Padded base64Decoded asByteArray
+		= (Base64UrlEncoder new decode: parts third base64Padded)
 		ifFalse: [ Error signal: 'signature does not match' ]
