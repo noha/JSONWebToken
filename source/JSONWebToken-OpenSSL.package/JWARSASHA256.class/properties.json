@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "TorstenBergmann 8/13/2018 15:25",
 	"super" : "JsonWebAlgorithm",
-	"category" : "JSONWebToken-Core-Algorithms",
+	"category" : "JSONWebToken-OpenSSL",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

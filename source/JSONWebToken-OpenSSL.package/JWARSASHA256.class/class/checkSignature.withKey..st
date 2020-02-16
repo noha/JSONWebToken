@@ -7,7 +7,7 @@ checkSignature: parts withKey: key
 			parts second}.
 	signatureByteArray := parts third base64Padded base64Decoded
 		asByteArray.
-	rsa := LcRSA fromRsaPublicKeyPemString: key.
+	rsa := LcRSA fromPemString: key.
 	pubKey := LcEvpPublicKey setRSA: rsa.
 
 			(pubKey
