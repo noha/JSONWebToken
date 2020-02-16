@@ -18,5 +18,5 @@ baseline: spec
 					with: [ spec requires: #(#'JSONWebToken-Core' 'OpenSSL') ].
 			spec
 			group: 'Core' with: #('JSONWebToken-Core');
-			group: 'OpenSSL' with: #('JSONWebToken-OpenSSL');
-			group: 'default' with: #('Core' 'OpenSSL') ]
+			group: 'SSL' with: #('JSONWebToken-OpenSSL');
+			group: 'default' with: #('Core' 'SSL') ]
