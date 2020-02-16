@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "JSONWebToken-OpenSSL-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "JSONWebTokenOpenSSLTest",
+	"type" : "normal"
+}
