@@ -1,3 +1,6 @@
 sign
 signMessage: aString withKey: anObject
-	self notYetImplemented 
+	| pkey sig |
+	pkey := LcEvpPublicKey setRSA: (LcRSA fromPemString: anObject).
+	sig := pkey digestSignMessage: aString.
+	^ sig
