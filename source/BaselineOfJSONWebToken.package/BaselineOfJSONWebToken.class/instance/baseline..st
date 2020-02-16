@@ -19,4 +19,5 @@ baseline: spec
 			spec
 			group: 'Core' with: #('JSONWebToken-Core');
 			group: 'SSL' with: #('JSONWebToken-OpenSSL');
-			group: 'default' with: #('Core' 'SSL') ]
+                        group: 'Tests' with: #('JSONWebToken-Tests');
+			group: 'default' with: #('Core' 'SSL' 'Tests') ]
