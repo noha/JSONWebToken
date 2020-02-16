@@ -13,4 +13,10 @@ baseline: spec
 				package: #'JSONWebToken-Core'
 					with: [ spec requires: #('NeoJSON') ];
 				package: 'JSONWebToken-Tests'
-					with: [ spec requires: #(#'JSONWebToken-Core') ] ]
+					with: [ spec requires: #(#'JSONWebToken-Core') ];
+				package: 'JSONWebToken-OpenSSL'
+					with: [ spec requires: #(#'JSONWebToken-Core' 'OpenSSL') ].
+			spec
+			group: 'Core' with: #('JSONWebToken-Core');
+			group: 'OpenSSL' with: #('JSONWebToken-OpenSSL');
+			group: 'default' with: #('Core' 'OpenSSL') ]
