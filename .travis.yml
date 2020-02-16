@@ -4,13 +4,7 @@ sudo: false
 os:
 - linux
 
-matrix:
-  include:
-    - smalltalk: Pharo64-7.0
-      smalltalk_config: .smalltalk.ston
-    - smalltalk: Pharo32-7.0
-      smalltalk_config: .smalltalk.ston
-    - smalltalk: Pharo32-6.1
-      smalltalk_config: .smalltalk-legacy.ston
-    - smalltalk: Pharo32-5.0
-      smalltalk_config: .smalltalk-legacy.ston
+smalltalk:
+  - Pharo64-8.0
+  - Pharo64-7.0
+  - Pharo32-6.1
