@@ -7,9 +7,11 @@ checkSignature: parts withKey: key
 			parts second}.
 	signatureByteArray := parts third base64Padded base64Decoded
 		asByteArray.
-	rsa := LcRSA fromPemString: key.
+	rsa := (key includesSubstring: 'BEGIN RSA PUBLIC KEY')
+		ifTrue: [ LcRSA fromRsaPublicKeyPemString: key ]
+		ifFalse: [ LcRSA fromPemString: key ].
 	pubKey := LcEvpPublicKey setRSA: rsa.
-
-			(pubKey
-				digestVerifyMessage: jwtHeaderAndPayload
-				with: signatureByteArray) ifFalse: [ Error signal: 'signature does not match' ]
+	(pubKey
+		digestVerifyMessage: jwtHeaderAndPayload
+		with: signatureByteArray)
+		ifFalse: [ Error signal: 'signature does not match' ]
