@@ -2,9 +2,10 @@ language: smalltalk
 sudo: false
 
 os:
-- linux
+  - linux
 
 smalltalk:
   - Pharo64-8.0
   - Pharo64-7.0
   - Pharo32-6.1
+  - GemStone64-3.5.x

@@ -3,7 +3,7 @@ SmalltalkCISpec {
     SCIMetacelloLoadSpec {
       #baseline : 'JSONWebToken',
       #directory : 'source',
-      #platforms : [ #pharo ]
+      #platforms : [ #pharo, #gemstone ]
     }
   ]
 }
