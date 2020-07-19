@@ -27,4 +27,8 @@ baseline: spec
 				group: 'Tests'
 					with: #('JSONWebToken-Core-Tests' 'JSONWebToken-OpenSSL-Tests');
 				group: 'default' with: #('Core' 'SSL' 'Tests') ].
-	spec for: #gemstone do: [ spec group: 'default' with: #('Core') ]
+	spec
+		for: #gemstone
+		do: [ spec
+				group: 'default' with: #('Core');
+				group: 'Tests' with: #('JSONWebToken-Core-Tests') ]
