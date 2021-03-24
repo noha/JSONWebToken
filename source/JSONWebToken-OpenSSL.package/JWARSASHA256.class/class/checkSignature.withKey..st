@@ -10,7 +10,12 @@ checkSignature: parts withKey: key
 	publicKey := (key includesSubstring: 'BEGIN RSA PUBLIC KEY')
 		ifTrue: [ LcEvpPublicKey setRSA:  (LcRSA fromRsaPublicKeyPemString: key) ]
 		ifFalse: [ LcEvpPublicKey fromPublicKeyPemString: key ].
-	(publicKey
+	jwtHeaderAndPayload pinInMemory.
+	signatureByteArray pinInMemory.
+	[ (publicKey
 		digestVerifyMessage: jwtHeaderAndPayload
 		with: signatureByteArray)
-		ifFalse: [ Error signal: 'signature does not match' ]
+		ifFalse: [ Error signal: 'signature does not match' ] ]
+		ensure: [ 
+			jwtHeaderAndPayload unpinInMemory.
+			signatureByteArray unpinInMemory  ]
