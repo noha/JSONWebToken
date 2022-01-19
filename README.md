@@ -8,7 +8,16 @@ Implementation of a JSON web token following [RFC 7519](https://tools.ietf.org/h
 
 ## Installation
 
-in your Pharo environment (Pharo 6 or higher) evaluate
+For pharo9 and above use
+
+```Smalltalk
+Metacello new
+      baseline:'JSONWebToken';
+      repository: 'github://noha/JSONWebToken:pharo9-openssl1.1/source';
+      load
+```
+
+For pharo8 and below use
 
 ```Smalltalk
 Metacello new
