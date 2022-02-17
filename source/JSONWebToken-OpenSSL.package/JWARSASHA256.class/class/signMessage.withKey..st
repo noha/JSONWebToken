@@ -1,6 +1,8 @@
 sign
-signMessage: aString withKey: anObject
+signMessage: message withKey: anObject
 	| pkey sig |
 	pkey := LcEvpPublicKey setRSA: (LcRSA fromPemString: anObject).
-	sig := pkey digestSignMessage: aString.
+	message pinInMemory.
+	sig := [ pkey digestSignMessage: message ]
+		ensure: [ message unpinInMemory ].
 	^ sig
