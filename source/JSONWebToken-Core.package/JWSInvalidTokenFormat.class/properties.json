@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "AGInvalidTokenFormat",
+	"name" : "JWSInvalidTokenFormat",
 	"type" : "normal"
 }
