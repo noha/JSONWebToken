@@ -3,7 +3,7 @@ checkSignature: aString withKey: key
 	| jwtHeaderAndPayload signatureByteArray publicKey tokenParts |
 	tokenParts := $. split: aString.
 	jwtHeaderAndPayload := $. join: (tokenParts first: 2).
-	signatureByteArray := tokenParts third base64Padded base64Decoded
+	signatureByteArray := (Base64UrlEncoder new decode: tokenParts third base64Padded)
 		asByteArray.
 	publicKey := (key includesSubstring: 'BEGIN RSA PUBLIC KEY')
 		ifTrue: [ LcEvpPublicKey setRSA:  (LcRSA fromRsaPublicKeyPemString: key) ]
