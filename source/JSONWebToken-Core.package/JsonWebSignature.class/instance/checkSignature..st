@@ -1,5 +1,10 @@
 signature
-checkSignature: parts
-
+checkSignature: aString
+	| token |
+	token := (aString isString not) 
+		ifTrue: [ 
+			"this seems to be the old usage handing out the parts collection so resemble"
+			$. join: aString  ]
+		ifFalse: [ aString ].
 	
-	self protectedHeader algorithm checkSignature: parts withKey: key
+	self protectedHeader algorithm checkSignature: token withKey: key

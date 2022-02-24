@@ -1,10 +1,9 @@
 sign
-checkSignature: parts withKey: key
+checkSignature: aString withKey: key
+	| tokenParts |
+	tokenParts := $. split: aString.
 	(self
-		signMessage:
-			($.
-				join:
-					{parts first.
-					parts second}) withKey: key)
-		= (Base64UrlEncoder new decode: parts third base64Padded)
+		signMessage: ($. join: (tokenParts first: 2)) 
+		withKey: key)
+		= (Base64UrlEncoder new decode: tokenParts third base64Padded)
 		ifFalse: [ Error signal: 'signature does not match' ]

@@ -1,11 +1,9 @@
 sign
-checkSignature: parts withKey: key
-	| jwtHeaderAndPayload signatureByteArray publicKey |
-	jwtHeaderAndPayload := $.
-		join:
-			{parts first.
-			parts second}.
-	signatureByteArray := parts third base64Padded base64Decoded
+checkSignature: aString withKey: key
+	| jwtHeaderAndPayload signatureByteArray publicKey tokenParts |
+	tokenParts := $. split: aString.
+	jwtHeaderAndPayload := $. join: (tokenParts first: 2).
+	signatureByteArray := (Base64UrlEncoder new decode: tokenParts third base64Padded)
 		asByteArray.
 	publicKey := (key includesSubstring: 'BEGIN RSA PUBLIC KEY')
 		ifTrue: [ LcEvpPublicKey setRSA:  (LcRSA fromRsaPublicKeyPemString: key) ]
