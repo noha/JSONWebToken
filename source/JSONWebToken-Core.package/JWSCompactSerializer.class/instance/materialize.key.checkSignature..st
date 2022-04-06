@@ -5,10 +5,10 @@ materialize: aString key: aKeyString checkSignature: checkSignature
 
 	parts := $. split: aString.
 	(parts size = 3) ifFalse: [ JWSInvalidTokenFormat signal: 'the format of the token is invalid' ].
-	header := JWSHeader fromJson: ( self base64Decoded: parts first ) utf8Decoded.
+	header := JWSHeader fromJson: ( self class base64UrlDecoded: parts first ) utf8Decoded.
 	jws := JsonWebSignature new
 		key: aKeyString;
 		setProtectedHeader: header.
 	checkSignature
 		ifTrue: [ jws checkSignature: parts ].
-	^ jws payload: ( JWTClaimsSet fromJson: ( self base64Decoded: parts second ) utf8Decoded )
+	^ jws payload: ( JWTClaimsSet fromJson: ( self class base64UrlDecoded: parts second ) utf8Decoded )

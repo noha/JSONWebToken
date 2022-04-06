@@ -1,12 +1,11 @@
 sign
-checkSignature: parts withKey: key
+checkSignatureOfParts: parts withKey: key
 	| jwtHeaderAndPayload signatureByteArray publicKey |
 	jwtHeaderAndPayload := $.
 		join:
 			{parts first.
 			parts second}.
-	signatureByteArray := parts third base64Padded base64Decoded
-		asByteArray.
+	signatureByteArray := JWSSerializer base64UrlDecoded: parts third "base64Padded base64Decoded".
 	publicKey := (key includesSubstring: 'BEGIN RSA PUBLIC KEY')
 		ifTrue: [ LcEvpPublicKey setRSA:  (LcRSA fromRsaPublicKeyPemString: key) ]
 		ifFalse: [ LcEvpPublicKey fromPublicKeyPemString: key ].
