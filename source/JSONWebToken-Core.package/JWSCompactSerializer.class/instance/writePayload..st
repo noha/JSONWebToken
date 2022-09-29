@@ -1,3 +1,3 @@
 writing
 writePayload: anObject
-	stream nextPutAll: (self base64Encoded: anObject asJson asByteArray) 
+	stream nextPutAll: (self class base64UrlEncoded: anObject asJson utf8Encoded) 

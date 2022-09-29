@@ -1,5 +1,5 @@
 sign
-checkSignature: parts withKey: key
+checkSignatureOfParts: parts withKey: key
 	(self
 		signMessage:
 			($.
