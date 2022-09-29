@@ -12,17 +12,22 @@ on:
   push:
     branches:
       - development
+      - pharo9-openssl1.1
+      - pharo10-openssl1.1
   
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        smalltalk: [ Pharo64-11, Pharo64-10, Pharo64-9.0, Pharo64-8.0 ]
+    name: ${{ matrix.smalltalk }}
     steps:
       - uses: actions/checkout@v2
       - uses: hpi-swa/setup-smalltalkCI@v1
         id: smalltalkci
         with:
-          smalltalk-version: Pharo64-9.0
-      - run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-version }}
+          smalltalk-image: ${{ matrix.smalltalk }}
+      - run: smalltalkci -s ${{ matrix.smalltalk }}
         shell: bash
         timeout-minutes: 15
