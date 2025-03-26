@@ -1,3 +1,6 @@
 accessing - basic
-at: aString 
-	^ claims at: aString
+at: aString
+
+	^ strict
+		  ifTrue: [ claims at: aString ]
+		  ifFalse: [ claims at: aString ifAbsent: [  ] ]
