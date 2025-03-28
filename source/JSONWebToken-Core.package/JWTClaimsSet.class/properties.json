@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"claims"
+		"claims",
+		"strict"
 	],
 	"name" : "JWTClaimsSet",
 	"type" : "normal"

@@ -1,0 +1,4 @@
+public
+beLenient
+
+	strict := false
