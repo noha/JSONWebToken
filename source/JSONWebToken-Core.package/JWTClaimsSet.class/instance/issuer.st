@@ -1,3 +1,0 @@
-accessing
-issuer
-	^ self iss

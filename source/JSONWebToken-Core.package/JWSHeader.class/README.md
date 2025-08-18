@@ -1,1 +1,0 @@
-JSON Web signature header

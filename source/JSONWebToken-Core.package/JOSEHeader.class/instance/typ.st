@@ -1,3 +1,0 @@
-accessing
-typ
-	^ self type
