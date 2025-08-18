@@ -5,7 +5,8 @@ Class {
 	#name : 'JWTClaimsSet',
 	#superclass : 'Object',
 	#instVars : [
-		'claims'
+		'claims',
+		'strict'
 	],
 	#category : 'JSONWebToken-Core-Base',
 	#package : 'JSONWebToken-Core',
@@ -24,8 +25,11 @@ JWTClaimsSet >> asJson [
 ]
 
 { #category : 'accessing - basic' }
-JWTClaimsSet >> at: aString [ 
-	^ claims at: aString
+JWTClaimsSet >> at: aString [
+
+	^ strict
+		  ifTrue: [ claims at: aString ]
+		  ifFalse: [ claims at: aString ifAbsent: [  ] ]
 ]
 
 { #category : 'accessing - basic' }
@@ -93,6 +97,18 @@ JWTClaimsSet >> authorizedParty: anObject [
 	self at: 'azp' put: anObject
 ]
 
+{ #category : 'public' }
+JWTClaimsSet >> beLenient [
+
+	strict := false
+]
+
+{ #category : 'public' }
+JWTClaimsSet >> beStrict [
+
+	strict := true
+]
+
 { #category : 'accessing' }
 JWTClaimsSet >> claims [
 	^ claims
@@ -142,6 +158,7 @@ JWTClaimsSet >> iat: anObject [
 JWTClaimsSet >> initialize [
 	super initialize.
 	claims := Dictionary new.
+	strict := true
 ]
 
 { #category : 'accessing' }

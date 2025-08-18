@@ -13,16 +13,7 @@ For pharo9 and above use
 ```Smalltalk
 Metacello new
       baseline:'JSONWebToken';
-      repository: 'github://noha/JSONWebToken:pharo9-openssl1.1/source';
-      load
-```
-
-For pharo8 and below use
-
-```Smalltalk
-Metacello new
-      baseline:'JSONWebToken';
-      repository: 'github://noha/JSONWebToken:master/source';
+      repository: 'github://noha/JSONWebToken/source';
       load
 ```
 
