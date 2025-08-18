@@ -1,4 +1,0 @@
-public
-beStrict
-
-	strict := true

@@ -1,4 +1,0 @@
-public
-beLenient
-
-	strict := false

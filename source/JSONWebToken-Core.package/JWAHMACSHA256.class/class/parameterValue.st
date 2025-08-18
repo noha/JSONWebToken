@@ -1,3 +1,0 @@
-accessing
-parameterValue
-	^ 'HS256'
