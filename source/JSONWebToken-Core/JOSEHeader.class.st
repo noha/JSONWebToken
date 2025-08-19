@@ -26,6 +26,16 @@ JOSEHeader >> = aHeader [
 	^ aHeader hasSameElements: properties
 ]
 
+{ #category : 'accessing' }
+JOSEHeader >> at: aKey [
+	^ properties at: aKey
+]
+
+{ #category : 'accessing' }
+JOSEHeader >> at: aKey put: aValue [
+	properties at: aKey put: aValue
+]
+
 { #category : 'testing' }
 JOSEHeader >> hasSameElements: aDictionary [
 	^ (properties difference: aDictionary) isEmpty
@@ -34,6 +44,17 @@ JOSEHeader >> hasSameElements: aDictionary [
 { #category : 'comparing' }
 JOSEHeader >> hash [
 	^ properties hash
+]
+
+{ #category : 'accessing' }
+JOSEHeader >> kid [
+"Public Key ID"
+	^ properties at: 'kid'
+]
+
+{ #category : 'accessing' }
+JOSEHeader >> kid: anObject [
+	properties at: 'kid' put: anObject
 ]
 
 { #category : 'accessing' }
