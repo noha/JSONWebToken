@@ -5,7 +5,8 @@ Class {
 	#name : 'JOSEHeader',
 	#superclass : 'Object',
 	#instVars : [
-		'properties'
+		'properties',
+		'strict'
 	],
 	#category : 'JSONWebToken-Core-Headers',
 	#package : 'JSONWebToken-Core',
@@ -27,13 +28,28 @@ JOSEHeader >> = aHeader [
 ]
 
 { #category : 'accessing' }
-JOSEHeader >> at: aKey [
-	^ properties at: aKey
+JOSEHeader >> at: aString [
+
+	^ strict
+		  ifTrue: [ properties at: aString ]
+		  ifFalse: [ properties at: aString ifAbsent: nil ]
 ]
 
 { #category : 'accessing' }
 JOSEHeader >> at: aKey put: aValue [
 	properties at: aKey put: aValue
+]
+
+{ #category : 'initialization' }
+JOSEHeader >> beLenient [
+
+	strict := false
+]
+
+{ #category : 'initialization' }
+JOSEHeader >> beStrict [
+
+	strict := true
 ]
 
 { #category : 'testing' }
@@ -44,6 +60,12 @@ JOSEHeader >> hasSameElements: aDictionary [
 { #category : 'comparing' }
 JOSEHeader >> hash [
 	^ properties hash
+]
+
+{ #category : 'initialization' }
+JOSEHeader >> initialize [ 
+	super initialize.
+	strict := true
 ]
 
 { #category : 'accessing' }

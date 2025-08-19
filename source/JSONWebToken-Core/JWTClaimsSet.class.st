@@ -32,7 +32,7 @@ JWTClaimsSet >> at: aString [
 
 	^ strict
 		  ifTrue: [ claims at: aString ]
-		  ifFalse: [ claims at: aString ifAbsent: [  ] ]
+		  ifFalse: [ claims at: aString ifAbsent: nil ]
 ]
 
 { #category : 'accessing - basic' }
