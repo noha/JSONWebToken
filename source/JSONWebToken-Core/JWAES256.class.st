@@ -1,8 +1,10 @@
 "
 I am an implementation of the ES256 (ECDSA with P-256 and SHA-256) JWT signing algorithm.
 
-I use the OpenSSL EVP interface through LcEvpPublicKey for signing and verification.
+I use the OpenSSL EVP interface through `LcEvpPublicKey` for signing and verification.
 Since the ES256 standard requires the signature to be a 64-byte concatenation of R and S, and OpenSSL uses the DER format, I provide the necessary conversion logic.
+
+I provide robust assertions for public and private PEM key strings, supporting both PKCS#1 and PKCS#8 formats for private keys, and ensuring proper formatting by trimming whitespace.
 
 Example usage:
 ```pharo
@@ -18,10 +20,53 @@ Class {
 	#tag : 'Algorithms'
 }
 
+{ #category : 'private' }
+JWAES256 class >> assertPemString: aPemString beginsWithAny: headers endsWithAny: footers description: aDescription [
+
+	| trimmed |
+	aPemString ifNil: [ AssertionFailure signal: aDescription , ' is nil' ].
+
+	aPemString isString ifFalse: [
+		AssertionFailure signal: aDescription , ' is not a string' ].
+
+	trimmed := aPemString trim.
+
+	headers with: footers do: [ :header :footer |
+			((trimmed beginsWith: header) and: [ trimmed endsWith: footer ]) ifTrue: [
+					trimmed size < 100 ifTrue: [
+						AssertionFailure signal: 'Not a valid ' , aDescription , ': content is too short' ].
+					^ self ] ].
+
+	AssertionFailure signal:
+		'Not a valid ' , aDescription , ': missing or mismatched PEM headers'
+]
+
+{ #category : 'asserting' }
+JWAES256 class >> assertPrivateKeyPemString: aPrivateKeyPemString [
+
+	self
+		assertPemString: aPrivateKeyPemString
+		beginsWithAny: { '-----BEGIN EC PRIVATE KEY-----'. '-----BEGIN PRIVATE KEY-----' }
+		endsWithAny: { '-----END EC PRIVATE KEY-----'. '-----END PRIVATE KEY-----' }
+		description: 'EC private key'
+]
+
+{ #category : 'asserting' }
+JWAES256 class >> assertPublicKeyPemString: aPublicKeyPemString [
+
+	self
+		assertPemString: aPublicKeyPemString
+		beginsWithAny: { '-----BEGIN PUBLIC KEY-----' }
+		endsWithAny: { '-----END PUBLIC KEY-----' }
+		description: 'EC public key'
+]
+
 { #category : 'sign' }
-JWAES256 class >> checkSignatureOfParts: parts withKey: key [
+JWAES256 class >> checkSignatureOfParts: parts withKey: publicKeyPemString [
 
 	| jwtHeaderAndPayload signatureByteArray publicKey derSignature |
+	self assertPublicKeyPemString: publicKeyPemString.
+
 	jwtHeaderAndPayload := $. join: {
 			                       parts first.
 			                       parts second }.
@@ -30,7 +75,7 @@ JWAES256 class >> checkSignatureOfParts: parts withKey: key [
 	"ES256 signature is 64 bytes (R | S). OpenSSL needs it in DER format."
 	derSignature := self rsToDer: signatureByteArray.
 
-	publicKey := LcEvpPublicKey fromPublicKeyPemString: key.
+	publicKey := LcEvpPublicKey fromPublicKeyPemString: publicKeyPemString.
 
 	jwtHeaderAndPayload pinInMemory.
 	derSignature pinInMemory.
@@ -144,10 +189,12 @@ JWAES256 class >> rsToDer: aByteArray [
 ]
 
 { #category : 'sign' }
-JWAES256 class >> signMessage: message withKey: anObject [
+JWAES256 class >> signMessage: message withKey: privateKeyPemString [
 
 	| pkey derSig |
-	pkey := LcEvpPublicKey fromPrivateKeyPemString: anObject.
+	self assertPrivateKeyPemString: privateKeyPemString.
+
+	pkey := LcEvpPublicKey fromPrivateKeyPemString: privateKeyPemString.
 	message pinInMemory.
 	derSig := [ pkey digestSignMessage: message asByteArray ] ensure: [
 		          message unpinInMemory ].
